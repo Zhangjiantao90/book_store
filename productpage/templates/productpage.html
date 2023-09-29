@@ -1,0 +1,16 @@
+<html lang="en">
+<head>
+    <title>Book Store</title>
+</head>
+<body>
+	<h1> Welcome to your Book Store </h1>
+	<table border="1" bgcolor="#ECF5FF">
+		<tr><td>标识</td><td>书名</td><td>作者</td><td>详情</td></tr>
+		
+		{% for item in books %}
+		<tr><td>{{item.identifier}}</td><td>{{item.name}}</td><td>{{item.author}}</td><td><button onclick="window.location.href = '{{ url_for('detail',iden=item.identifier)}}';">详情</button></td></tr>
+		{% endfor %}
+	</table>
+	<button onclick="window.location.href = '{{url_for('addbook')}}'">新增</button>
+</body>
+</html>
