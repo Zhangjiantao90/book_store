@@ -1,2 +1,38 @@
 # book_store
-A simple micro-service architecture implementation of a Book Store API using Docker container.
+A simple micro-service architecture implementation of a Book Store API using Docker container infra structure.
+
+## Usage
+* Docker must be installed and running.
+* Pull the code and navigate inside the folder and run `docker-compose up`. This will start the docker multi-container setup.
+* Navigate to `http://localhost:5000/` you will see the page **Welcome to your Book Store** page up and running.
+
+## Architecture
+Book_store consists of two micro-service or containers working together they are
+    1. productpage
+    2. book-library
+    3. details
+    4. ratings
+
+### 1. book-library service
+
+---
+
+- This is where the books are stored hence the book-library name.
+- The main api data is stored in `book_registry` folder which contains `__init__.py`
+- Using the following for api :
+    - `flask` for creating a rest-ful api
+    - `shelve` for database
+- In the `dockerfile` we mention the image required for our api - in our case python
+- In `requirements.txt` we mention the packages required by out python api :
+    - Flask
+    - flask-restful
+    
+    
+    
+### 2. website service
+
+---
+
+- This is a simple website made using php.
+- For now fetching data from the book-library micro-service and displaying it.
+- In `docker-compose.yml` we define the services that need to be bundled together in the main docker container, also ports
